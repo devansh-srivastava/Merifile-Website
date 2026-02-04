@@ -1,0 +1,108 @@
+/* MeriFile - Custom Styles */
+
+/* === KEYFRAME ANIMATIONS === */
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(37, 211, 102, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(37, 211, 102, 0.6); }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+/* === CHAT BUBBLE ANIMATIONS === */
+
+.bubble-left { animation: slideInLeft 0.5s ease-out forwards; }
+.bubble-right { animation: slideInRight 0.5s ease-out forwards; }
+
+.delay-1 { animation-delay: 0.3s; opacity: 0; }
+.delay-2 { animation-delay: 0.8s; opacity: 0; }
+.delay-3 { animation-delay: 1.3s; opacity: 0; }
+.delay-4 { animation-delay: 1.8s; opacity: 0; }
+.delay-5 { animation-delay: 2.3s; opacity: 0; }
+.delay-6 { animation-delay: 2.8s; opacity: 0; }
+
+/* === FLOATING ANIMATIONS === */
+
+.float { animation: float 3s ease-in-out infinite; }
+.float-slow { animation: float 5s ease-in-out infinite; }
+.float-delayed { animation: float 4s ease-in-out infinite; animation-delay: 1s; }
+
+/* === EFFECTS === */
+
+.sparkle { animation: sparkle 2s ease-in-out infinite; }
+.pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+.hover-wiggle:hover { animation: wiggle 0.5s ease-in-out; }
+
+/* === BACKGROUND === */
+
+.animated-gradient {
+    background: linear-gradient(-45deg, #FEFCFA, #E8F5E9, #F5D6D6, #E8E0F0);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* === GLOBAL === */
+
+html { scroll-behavior: smooth; }
+
+/* === NOISE OVERLAY === */
+
+.noise-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* === MAGIC SHINE (button hover effect) === */
+
+.magic-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.magic-shine::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+    transform: rotate(30deg) translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.magic-shine:hover::after {
+    transform: rotate(30deg) translateX(100%);
+}
